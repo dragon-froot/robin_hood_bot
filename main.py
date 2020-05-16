@@ -16,8 +16,8 @@ password = parser.add_argument("-p", "--password",
 if __name__ == "__main__":
     main = Stocks(email, password)
     main.login()
-    while True:
-        main.get_owned_stocks()
+    
+    main.get_owned_stocks()
     
 
 
