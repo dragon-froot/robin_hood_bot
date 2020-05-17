@@ -31,19 +31,27 @@ class Stocks:
             total_spent = float(item['average_buy_price']) * float(item['quantity'])
             total_equity = float(item['quantity']) * float(realTime.currentPrices()['previous_close'])
 
-            # Change return data based off of time and day
-            if self.currentDay == 5 or 6:
-                #This needs to change later to return a new object
-                print('It is a weekend')
+            if total_spent > total_equity:
+                profit = '-' + total_spent - total_equity
+            else: 
+                profit =  total_spent - total_equity
 
+            # Change return data based off of time and day
+            # if self.currentDay == 5 or 6:
+            #     #This needs to change later to return a new object
+            #     print(datetime.time())
+            # elif datetime.time() > "00:00:00":
             holdings = {
-                "average_buy_price": item['average_buy_price'],
                 "symbol": item['symbol'],
+                "average_buy_price": item['average_buy_price'],
                 "quantity": item['quantity'],
-                "current_price": realTime.currentPrices(),
                 "total_spent": total_spent,
-                "total_equity": total_equity 
+                "total_equity": total_equity,
+                "current_price": realTime.currentPrices(),
+                "profit": profit
+              
             }
+
             print(holdings)
             
 
