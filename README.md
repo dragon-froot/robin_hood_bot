@@ -12,8 +12,8 @@ python3 -m pip install -r requirements.txt
 
 ## Basic Usage
 
-Once you have installed all of the requirements you can run the following command to get very basic data
+Once you have installed all requirements run the following command. This will return a list of all current holdings and basic information about what it is that you are holding.
 ```
 python3 main.py -e <RobinHood Email> -p <RobinHood Password>
 ```
-This will return a list of all current holdings and basic information about what it is that you are holding. 
+
