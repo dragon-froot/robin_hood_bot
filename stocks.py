@@ -21,37 +21,32 @@ class Stocks:
 
     def get_owned_stocks(self):
         data = r.get_current_positions()
+        
 
+        
+        marker = 0
         for item in data:
             item['symbol'] = r.get_symbol_by_url(item['instrument'])
-            
+            marker = marker + 1
             realTime = Helpers(item['symbol'])
 
             
             total_spent = float(item['average_buy_price']) * float(item['quantity'])
-            total_equity = float(item['quantity']) * float(realTime.currentPrices()['previous_close'])
+            total_equity = float(item['quantity']) * float(realTime.currentPrices()['last_trade_price'])
 
-            if total_spent > total_equity:
-                profit = '-' + total_spent - total_equity
-            else: 
-                profit =  total_spent - total_equity
-
-            # Change return data based off of time and day
-            # if self.currentDay == 5 or 6:
-            #     #This needs to change later to return a new object
-            #     print(datetime.time())
-            # elif datetime.time() > "00:00:00":
             holdings = {
+                "_id": marker,
                 "symbol": item['symbol'],
                 "average_buy_price": item['average_buy_price'],
                 "quantity": item['quantity'],
                 "total_spent": total_spent,
                 "total_equity": total_equity,
                 "current_price": realTime.currentPrices(),
-                "profit": profit
+                # "profit": profit
               
             }
 
+            
             print(holdings)
             
 
