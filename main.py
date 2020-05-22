@@ -1,23 +1,23 @@
 from argparse import ArgumentParser
 from stocks import Stocks
 from helpers import Helpers
-from watchlist import get_watchlist
+from Watchlist import Watchlist
 import robin_stocks as r
-from config import EMAIL, PASSWORD 
+
 
 
 # THis is where the script will get the user credentials
-# parser = ArgumentParser(description="You will include the email and password to login to this")
-# email = parser.add_argument("-e", "--email",
-#                             action="store_true", dest="rank", default=False,
-#                             help="This is where you will include your email ")
-# password = parser.add_argument("-p", "--password",
-#                             action="store_true", dest="rank", default=False,
-#                             help="This is where you will include your password")
+parser = ArgumentParser(description="You will include the email and password to login to this")
+email = parser.add_argument("-e", "--email",
+                            action="store_true", dest="rank", default=False,
+                            help="This is where you will include your email ")
+password = parser.add_argument("-p", "--password",
+                            action="store_true", dest="rank", default=False,
+                            help="This is where you will include your password")
 
 
 def login():
-    login = r.login(EMAIL, PASSWORD)
+    login = r.login(email, password)
 
     return login['access_token']
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
         - Level 1 data 
     """
     ##################################
-    watchlist = get_watchlist()
+    watchlist = Watchlist()
     stocks = Stocks(watchlist)
     ##################################
 

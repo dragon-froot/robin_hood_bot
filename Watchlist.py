@@ -2,6 +2,7 @@ import robin_stocks as r
 
 
 class Watchlist:
+    
     def get_current_watchlist():
         watchlist = r.get_watchlist_by_name(name="Default")
         fullList = list()

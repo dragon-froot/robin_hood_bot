@@ -1,9 +1,9 @@
 import robin_stocks as r
 
 class Helpers:
-    def __init__(self, symbol, watchlist):
+    def __init__(self, symbol):
         self.symbol = symbol
-        self.watchlist = watchlist
+        # self.watchlist = watchlist
     
     def currentPrices(self):
         symbol = self.symbol
@@ -12,11 +12,11 @@ class Helpers:
         for item in data:
             return item
     
-    def checkWatchList(self, list):
-        watchlist = self.watchlist
+    # def checkWatchList(self, list):
+    #     watchlist = self.watchlist
 
-        for holding in watchlist:
-            pass
+    #     for holding in watchlist:
+    #         pass
 """
 MovAvgExponential
 https://tlc.thinkorswim.com/center/reference/Tech-Indicators/studies-library/M-N/MovAvgExponential.html

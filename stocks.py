@@ -1,7 +1,7 @@
-import robin_stocks as r
 import datetime
 from helpers import Helpers 
-
+# import robin_stocks as r
+import robin_stocks as r
 
 class Stocks:
     def __init__(self, watchlsist):
@@ -12,7 +12,8 @@ class Stocks:
 
 
     def get_owned_stocks(self):
-        data = r.get_current_positions()
+        # data = r.get_current_positions()
+        data = r.get_all_positions()
         
 
         
