@@ -12,7 +12,7 @@ class Stocks:
 
 
     def get_owned_stocks(self):
-        data = r.get_current_positions()
+        data = r.get_open_stock_positions()
         # data = r.get_all_positions()
         
 
