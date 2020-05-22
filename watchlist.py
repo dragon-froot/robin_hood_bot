@@ -2,9 +2,6 @@ import robin_stocks as r
 import time
 
 
-def login():
-    r.login('dragon-froot710@protonmail.com', '1185949Bobsaget1')
-
 def get_watchlist():
     data = r.get_watchlist_by_name(name="Default")
     watching = []
@@ -16,5 +13,5 @@ def get_watchlist():
 
     print(watching)
 
-login()
-get_watchlist()
+
+# get_watchlist()

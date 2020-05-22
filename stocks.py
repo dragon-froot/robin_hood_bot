@@ -4,20 +4,12 @@ from helpers import Helpers
 
 
 class Stocks:
-    def __init__(self, email, password):
-        self.email = email
-        self.password = password
+    def __init__(self, watchlsist):
+        self.watchlsist = watchlsist
         self.currentDay = datetime.datetime.today().weekday()
         
-    def login(self):
-        email = self.email
-        password = self.password
-
-        login = r.login(email, password)
-        #return the token
-        return login['access_token']
-
     
+
 
     def get_owned_stocks(self):
         data = r.get_current_positions()
