@@ -1,7 +1,8 @@
 from argparse import ArgumentParser
-from stocks import Stocks
+from Stock import Stock
 from helpers import Helpers
 from Watchlist import Watchlist
+from Bot import Bot
 import robin_stocks as r
 
 
@@ -23,26 +24,17 @@ def login():
 
 
 if __name__ == "__main__":
-
-    # IN ORDER TO DO ANYTHING, WE NEED TO LOGIN TO OUR ROBINHOOD ACCOUNT
-    ##################################
     login()
-    ##################################
 
-    """
-        Right here we are going feed the stock model our 
-        - Technical data
-        - Fundemental data
-        - Level 1 data 
-    """
-    ##################################
     watchlist = Watchlist()
-    stocks = Stocks(watchlist)
-    ##################################
+    current_positions = Stock()
+    bot = Bot(watchlist.get_current_watchlist(),
+              current_positions.get_current_positions(),
+             "Tester")
 
-    # RETURN A LIST OF WHAT YOU OWN IN YOUR ROBINHOOD ACCOUNT
-    ##################################
-    stocks.get_owned_stocks()
-    ##################################
+    bot.check_current_positions_for_change()
+
+
+    
     
 
