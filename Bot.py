@@ -14,15 +14,15 @@ class Bot:
         
         for item in current_positions:
             symbol = item['symbol']
-            total_spent = item['total_spent']
+            total_equity = item['total_equity']
             current_price = item['current_price']['last_trade_price']
 
             current_value = float(item['quantity']) * float(current_price)
 
             change = {
                 "symbol": symbol,
-                "total_spent": total_spent,
-                "profit": float(current_value) - float(total_spent)
+                "total_equity": total_equity,
+                "profit": round(float(current_value) - float(total_equity), 2)
                 # "current_price": item['current_price']
             }
 
