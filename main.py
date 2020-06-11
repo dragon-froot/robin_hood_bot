@@ -2,9 +2,12 @@ from argparse import ArgumentParser
 from Stock import Stock
 from helpers import Helpers
 from Watchlist import Watchlist
+from Options import Options
 from Bot import Bot
 import robin_stocks as r
 
+import time
+from datetime import datetime
 
 
 # THis is where the script will get the user credentials
@@ -18,22 +21,35 @@ password = parser.add_argument("-p", "--password",
 
 
 def login():
-    login = r.login(email, password)
+    login = r.login()
 
     return login['access_token']
 
 
 if __name__ == "__main__":
+#------------#
     login()
+#------------#
 
-    watchlist = Watchlist()
-    current_positions = Stock()
-    bot = Bot(watchlist.get_current_watchlist(),
-              current_positions.get_current_positions(),
-             "Tester")
+h = datetime.now().hour
+m = datetime.now().minute
+current_time = eval(f"{h}{m}")
 
-    bot.check_current_positions_for_change()
+# This will run between 6:30am and 3:32pm
+while current_time >= int(628) and current_time < int(1530):
 
+    # Return []
+    current_holdings = Stock().get_current_positions()
+
+    print(current_time)
+
+    def checkCurrentHoldings(current_holdings):
+        for item in current_holdings:
+            price = item['average_buy_price']
+
+
+    
+    time.sleep(10)
 
     
     

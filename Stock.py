@@ -15,22 +15,21 @@ class Stock:
             realTime = Helpers(item['symbol'])
 
 
-            total_equity = float(item['average_buy_price']) * float(item['quantity'])
-            total_equity = float(item['quantity']) * float(realTime.currentPrices()['last_trade_price'])
+            current_equity = float(item['quantity']) * float(realTime.currentPrices()['last_trade_price'])
+            price_paid = float(item['quantity']) * float(item['average_buy_price'])
 
             hold = {
             "symbol": item['symbol'],
             "average_buy_price": item['average_buy_price'],
             "quantity": item['quantity'],
-            "total_equity": total_equity,
-            "total_equity": total_equity,
+            "current_equity": current_equity,
             "current_price": realTime.currentPrices(),
-            # "profit": profit
+            "profit": round(float(current_equity) - float(price_paid), 2)
             }
 
             holdings.append(hold)
-            # return holdings
-            # print(holdings)
+            
+        # return holdings
         return holdings
 
 
