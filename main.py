@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 from Stock import Stock
 from helpers import Helpers
 from Watchlist import Watchlist
-from Options import Options
+# from Options import Options
 from Bot import Bot
 import robin_stocks as r
 
@@ -18,6 +18,9 @@ email = parser.add_argument("-e", "--email",
 password = parser.add_argument("-p", "--password",
                             action="store_true", dest="rank", default=False,
                             help="This is where you will include your password")
+option = parser.add_argument("-o", "--options",
+                              action="store_true", dest="rank", default=False,
+                              help="Include this if you would like to sell options")
 
 
 def login():
@@ -31,25 +34,27 @@ if __name__ == "__main__":
     login()
 #------------#
 
+#        GLOBAL
+#------------------------------#
 h = datetime.now().hour
 m = datetime.now().minute
 current_time = eval(f"{h}{m}")
+current_holdings = Stock().get_current_positions()
+#------------------------------#
+
+def sellOrDont(current_holdings):
+    for item in current_holdings:
+        percentage_change = (item['price_paid'] - item['current_equity']) / item['current_equity'] * 100.0
+        change = round(percentage_change, 2)
+
+        # print(item)
 
 # This will run between 6:30am and 3:32pm
-while current_time >= int(628) and current_time < int(1530):
-
-    # Return []
-    current_holdings = Stock().get_current_positions()
-
-    print(current_time)
-
-    def checkCurrentHoldings(current_holdings):
-        for item in current_holdings:
-            price = item['average_buy_price']
-
-
+# while current_time >= int(628) and current_time < int(1530):
+while True:
+    pass
     
-    time.sleep(10)
+    
 
     
     

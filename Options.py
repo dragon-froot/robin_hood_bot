@@ -1,8 +1,16 @@
-import robin_stocks as r 
+import robin_stocks as r
 
 class Options:
-    def showOptions(self):
-        positions = r.get_all_option_positions()
+    def __init__(self, watchlist):
+        self.watchlist = watchlist
 
-        for item in positions:
-            print(item)
+    def ironCondor(self):
+        params = []
+        for i in params:
+            #if the watchlist meets params
+            
+            #1.) buy a call right above stayBelow
+            #2.) sell a call at stayBelow
+
+            #3.) buy a put right above stayAbove
+            #4.) sell a pyt at stayAbove
