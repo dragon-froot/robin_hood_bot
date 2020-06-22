@@ -14,34 +14,23 @@ class Stock:
 
             # Returns current_price object for a give symbol
             realTime = Helpers(item['symbol'])
+            currentData = realTime.currentPrices()
 
-
-            current_equity = float(item['quantity']) * float(realTime.currentPrices()['ask_price'])
+            current_equity = float(item['quantity']) * float(currentData['ask_price'])
             price_paid = float(item['quantity']) * float(item['average_buy_price'])
-
-            # include rule object for the holding return statment
-                # the rules be will sent through an api or a form from the frontend
-                # each symbol will have it's own set of rules OPTIONS will be in Options.py
-
-            hold = {
-            "symbol": item['symbol'],
-            "average_buy_price": item['average_buy_price'],
-            "quantity": item['quantity'],
-            "price_paid": price_paid,
-            "current_equity": current_equity,
-            "current_price": realTime.currentPrices(),
-            "profit": round(float(current_equity) - float(price_paid), 2)
+            
+            singleHolding = {
+                "symbol": item['symbol'],
+                "quantity": item['quantity'],
+                "current_price": currentData['ask_price'],
+                "average_buy_price": item['average_buy_price'],
+                "price_paid": price_paid,
+                "current_equity": current_equity,
+                "profit": round(float(current_equity) - float(price_paid), 2)
             }
 
-            holdings.append(hold)
+            holdings.append(singleHolding)
             
         return holdings
 
 
-# USE THIS FOR TESTING
-# def login():
-#     login = r.login(email, password)
-
-# login()
-# tester = Stock()
-# tester.get_current_positions()

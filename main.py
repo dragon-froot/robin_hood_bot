@@ -1,11 +1,7 @@
 from argparse import ArgumentParser
 from Stock import Stock
-from helpers import Helpers
-from Watchlist import Watchlist
-# from Options import Options
-from Bot import Bot
+from StockBot import StockBot
 import robin_stocks as r
-
 import time
 from datetime import datetime
 
@@ -38,21 +34,22 @@ if __name__ == "__main__":
 #------------------------------#
 h = datetime.now().hour
 m = datetime.now().minute
-current_time = eval(f"{h}{m}")
+# The following line bugs out for some reason. It was 022
+# current_time = eval(f"{h}{m}")
 current_holdings = Stock().get_current_positions()
 #------------------------------#
 
-def sellOrDont(current_holdings):
-    for item in current_holdings:
-        percentage_change = (item['price_paid'] - item['current_equity']) / item['current_equity'] * 100.0
-        change = round(percentage_change, 2)
+
 
         # print(item)
 
 # This will run between 6:30am and 3:32pm
 # while current_time >= int(628) and current_time < int(1530):
+
 while True:
-    pass
+    print(current_holdings)
+
+    time.sleep(4)
     
     
 
