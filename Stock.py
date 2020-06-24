@@ -13,8 +13,8 @@ class Stock:
             item['symbol'] = r.get_symbol_by_url(item['instrument'])
 
             # Returns current_price object for a give symbol
-            realTime = Helpers(item['symbol'])
-            currentData = realTime.currentPrices()
+            helperFunction = Helpers(item['symbol'])
+            currentData = helperFunction.currentPrices()
 
             current_equity = float(item['quantity']) * float(currentData['ask_price'])
             price_paid = float(item['quantity']) * float(item['average_buy_price'])
