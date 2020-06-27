@@ -24,8 +24,8 @@ class Stock:
                 "quantity": item['quantity'],
                 "current_price": currentData['ask_price'],
                 "average_buy_price": item['average_buy_price'],
-                "price_paid": price_paid,
-                "current_equity": current_equity,
+                "price_paid": round(price_paid,2),
+                "current_equity": round(current_equity,2),
                 "profit": round(float(current_equity) - float(price_paid), 2)
             }
 
