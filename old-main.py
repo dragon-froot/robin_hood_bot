@@ -42,7 +42,7 @@ portfolio = Portfolio(currentHoldings).portfolio_worth()
 # This will run between 6:30am and 3:32pm
 # while current_time >= int(628) and current_time < int(1530):
 
-print(portfolio)
+# print(portfolio)
         
 
     
